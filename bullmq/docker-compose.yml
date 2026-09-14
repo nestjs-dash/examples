@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:18
+    ports:
+      - '5431:5432'
+    environment:
+      POSTGRES_USER: nestjs-dash
+      POSTGRES_PASSWORD: nestjs-dash
+      POSTGRES_DB: nestjs_dash_example_bullmq
+    volumes:
+      - bullmq_postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U nestjs-dash -d nestjs_dash_example_bullmq']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  # Redis-compatible cache/broker for BullMQ. Host port 6380 matches
+  # examples/bullmq/.env.example (6379 is often already taken locally).
+  valkey:
+    image: valkey/valkey:8
+    ports:
+      - '6380:6379'
+    volumes:
+      - bullmq_valkey_data:/data
+    healthcheck:
+      test: ['CMD', 'valkey-cli', 'ping']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  bullmq_postgres_data:
+  bullmq_valkey_data:

@@ -1,0 +1,39 @@
+{
+  "name": "example-typeorm",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Minimal AdminModule example using @nestjs-dash/typeorm against a real Postgres database.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "build": "nest build",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:prod": "node dist/main",
+    "lint": "oxlint src",
+    "check-types": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@nestjs-dash/core": "1.1.1",
+    "@nestjs-dash/nestjs": "1.1.2",
+    "@nestjs-dash/storage": "1.0.4",
+    "@nestjs-dash/typeorm": "1.0.3",
+    "@nestjs/common": "^12.0.1",
+    "@nestjs/config": "^12.0.0",
+    "@nestjs/core": "^12.0.1",
+    "@nestjs/platform-express": "^12.0.1",
+    "@nestjs/typeorm": "^12.0.1",
+    "pg": "^8.16.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "typeorm": "^1.1.1"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^12.0.0",
+    "@nestjs/schematics": "^12.0.0",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.0.0",
+    "oxlint": "^1.82.0",
+    "typescript": "^6.0.2"
+  }
+}
