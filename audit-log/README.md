@@ -5,6 +5,10 @@ turned on to record every create/update/delete/bulk/relation mutation made
 through the admin UI (`AdminController`). Mutations made only through the
 JSON API are not audited.
 
+This example also wires up a `stack` **channel** (`database` + `file`), so
+every mutation is written to both `AuditLogEntity` *and* an NDJSON file
+under `audit/` in this app's working directory — see "Channels" below.
+
 Docs: [Audit log](https://nestjs-dash.zakout.tech/plugins/audit-log).
 
 ## What "audit" actually is
@@ -47,6 +51,29 @@ build two dashboard widgets — proof that the audit trail is just a normal
 table you can report on, not a black box only the built-in Activity page
 can read.
 
+## Channels
+
+`audit.channels`/`audit.default` in `app.module.ts` route every entry to a
+`stack` channel that fans out to both `database` (the original behavior)
+and `file` (Laravel `Log`-facade style — same idea as `Storage::disk()`,
+just for audit entries):
+
+```ts
+audit: {
+  enabled: true,
+  default: 'stack',
+  channels: {
+    database: { driver: 'database' },
+    file: { driver: 'file' }, // default path: 'audit/{resource}/{level}.log'
+    stack: { driver: 'stack', channels: ['database', 'file'] },
+  },
+},
+```
+
+Omitting `channels`/`default` entirely (just `audit: { enabled: true }`, as
+shown in most other examples) behaves exactly as before this feature
+existed — a single implicit `database` channel, nothing written to disk.
+
 ## Run it
 
 ```sh
@@ -83,9 +110,13 @@ Then open http://localhost:4006/admin and sign in with:
    events by action") — both query `AuditLogEntity` directly in
    `src/audit-activity.widget.ts`, rather than going through the Activity
    resource's adapter.
-5. `src/app.module.ts` — the `audit: { enabled: true }` + `dataSource` wiring
-   described above.
-6. `src/library.module.ts` / `src/authors/author.resource.ts` /
+5. After step 1, look under `audit/` in this app's working directory —
+   e.g. `audit/authors/info.log` — for the same mutation as an NDJSON line,
+   written by the `file` channel alongside the database row. It won't show
+   up in "Activity" (that resource only ever reads the `database` channel).
+6. `src/app.module.ts` — the `audit: { enabled: true, default: 'stack',
+   channels: {...} }` + `dataSource` wiring described above.
+7. `src/library.module.ts` / `src/authors/author.resource.ts` /
    `src/books/book.resource.ts` — the same `@AdminResource()`-decorated
    registration style as `examples/typeorm` (see that example's README for
    the full comparison against `forFeature([...])` and plain
