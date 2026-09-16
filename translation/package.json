@@ -14,11 +14,11 @@
     "check-types": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@nestjs-dash/core": "1.2.0",
-    "@nestjs-dash/nestjs": "1.2.0",
-    "@nestjs-dash/storage": "1.0.5",
-    "@nestjs-dash/translation": "0.2.0",
-    "@nestjs-dash/typeorm": "1.0.4",
+    "@nestjs-dash/core": "1.2.1",
+    "@nestjs-dash/nestjs": "1.2.1",
+    "@nestjs-dash/storage": "1.0.6",
+    "@nestjs-dash/translation": "0.2.1",
+    "@nestjs-dash/typeorm": "1.0.5",
     "@nestjs/common": "^12.0.1",
     "@nestjs/config": "^12.0.0",
     "@nestjs/core": "^12.0.1",

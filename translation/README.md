@@ -51,3 +51,5 @@ supportedLocales })` alongside the `DB_DRIVER`-conditional `TypeOrmModule.forRoo
   resource selection.
 - `src/locales.ts` — the `SUPPORTED_LOCALES`/`DEFAULT_LOCALE` shared between the module config and
   both resources.
+
+Docs: [Translation](https://nestjs-dash.zakot.tech/plugins/translation).

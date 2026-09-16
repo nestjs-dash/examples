@@ -1,6 +1,6 @@
 # example-in-memory
 
-The fastest way to try nestjs-dash — no database, no Docker, no `.env` file.
+The fastest way to try NestJS Dash — no database, no Docker, no `.env` file.
 `AuthorResource` and `BookResource` are backed by
 `createInMemoryResourceFromModel()` from `@nestjs-dash/in-memory`, seeded
 with a few records directly in `src/app.module.ts`. Same `Author` has-many
@@ -9,6 +9,9 @@ with a few records directly in `src/app.module.ts`. Same `Author` has-many
 adapter the adapter-contract test suite itself checks every other adapter
 against.
 
+This app also enables Admin API **Swagger**: `swagger: true` on `AdminModule`
+plus `await AdminModule.setupSwagger(app)` in `main.ts`.
+
 ## Run it
 
 ```sh
@@ -16,7 +19,12 @@ npm install
 npm run start:dev
 ```
 
-Then open http://localhost:4001/admin and sign in with:
+Then open:
+
+- Panel: http://localhost:4001/admin
+- Swagger UI: http://localhost:4001/api/docs
+
+Sign in with:
 
 - email: `admin@example.com`
 - password: `password`
@@ -34,9 +42,11 @@ Then open http://localhost:4001/admin and sign in with:
   instead of being listed in `panel.resources([...])`. Both paths land in
   the same resource registry, deduped by slug.
 - `src/app.module.ts` — the whole wiring: seed data, assigning
-  `Resource.adapter` from `createInMemoryResourceFromModel`, and
-  `AdminModule.forRoot({ panel: { resources: [...], pages: [...] } })`. No
+  `Resource.adapter` from `createInMemoryResourceFromModel`, `swagger: true`,
+  and `AdminModule.forRoot({ panel: { resources: [...], pages: [...] } })`. No
   async factory needed since there's no external connection to inject.
+- `src/main.ts` — `await AdminModule.setupSwagger(app)` after
+  `NestFactory.create` (required for Swagger UI; the flag alone is not enough).
 - `src/library-overview.page.ts` — `LibraryOverviewPage`, a custom page
   registered via direct `panel.pages([...])` config — no `@AdminPage()`
   decorator, no Nest provider, just a class extending `Page`. This app
@@ -50,3 +60,5 @@ Then open http://localhost:4001/admin and sign in with:
 
 Restarting the app resets all data — it only lives in memory for the
 process lifetime.
+
+Docs: [Swagger / OpenAPI](https://nestjs-dash.zakot.tech/plugins/swagger).

@@ -57,3 +57,5 @@ one complete immediately.
   like `TaskResource` (see `src/tasks/tasks.module.ts`).
 - `src/app.module.ts` — `panel.plugins([TypeOrmAdapter.forRoot(),
   BullMqQueuePlugin.forRoot({ queues: [tasksQueue] })])`.
+
+Docs: [BullMQ](https://nestjs-dash.zakot.tech/plugins/bullmq).

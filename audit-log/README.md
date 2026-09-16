@@ -5,6 +5,7 @@ turned on to record every create/update/delete/bulk/relation mutation made
 through the admin UI (`AdminController`). Mutations made only through the
 JSON API are not audited.
 
+Docs: [Audit log](https://nestjs-dash.zakot.tech/plugins/audit-log).
 
 ## What "audit" actually is
 
@@ -12,7 +13,7 @@ Audit logging is a **core + plugin split**, not a `panel.plugins([...])`
 entry:
 
 - **Core** (`@nestjs-dash/nestjs`) already always runs `AdminAuditInterceptor`
-  on every `AdminController` route. It decides *what* to audit (every
+  on every `AdminController` route. It decides _what_ to audit (every
   `@AdminAction(...)`-tagged mutating route, skipping `'view'`) and builds
   the `before`/`after` payload — but it does nothing with that payload
   unless audit is turned on.

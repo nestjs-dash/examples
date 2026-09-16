@@ -16,6 +16,8 @@ Then open http://localhost:4006/admin and sign in with:
 - email: `admin@example.com`
 - password: `password`
 
+Note: `example-audit-log` also defaults to port `4006` — run only one at a time, or override `PORT`.
+
 ## What to look at
 
 - `src/app.module.ts` — the whole theming surface in one place:
