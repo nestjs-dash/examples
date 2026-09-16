@@ -7,8 +7,8 @@ trimmed down so the focus stays on branding and the widget API.
 ## Run it
 
 ```sh
-pnpm install
-pnpm --filter example-theming start:dev
+npm install
+npm run start:dev
 ```
 
 Then open http://localhost:4006/admin and sign in with:

@@ -27,18 +27,15 @@ relationship field and every other example app's schema expect.
 ```sh
 docker compose up -d            # from this directory
 cp .env.example .env
-pnpm install
-pnpm --filter example-mikroorm start:dev
+npm install
+npm run db:sync                 # first run only — see below
+npm run start:dev
 ```
 
 The `nestjs_dash_example_mikroorm` database is created by `POSTGRES_DB` in
 this example's `docker-compose.yml` on first boot. MikroORM's schema isn't
 auto-synced by the app itself — on first run, create it with the bundled
-sync script (`scripts/sync-schema.ts`, run via `tsx`):
-
-```sh
-pnpm --filter example-mikroorm db:sync
-```
+sync script (`scripts/sync-schema.ts`, run via `tsx`), as above.
 
 Then open http://localhost:4003/admin and sign in with:
 

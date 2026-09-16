@@ -20,8 +20,8 @@ task's status to `done`.
 ```sh
 docker compose up -d            # from this directory (postgres + valkey)
 cp .env.example .env
-pnpm install
-pnpm --filter example-bullmq start:dev
+npm install
+npm run start:dev
 ```
 
 The `nestjs_dash_example_bullmq` database is created by `POSTGRES_DB` in this

@@ -23,8 +23,8 @@ nestjs-dash's metadata layered on.
 ```sh
 docker compose up -d            # from this directory
 cp .env.example .env
-pnpm install
-pnpm --filter example-typeorm start:dev
+npm install
+npm run start:dev
 ```
 
 `synchronize: true` creates the `authors`/`books`/`publishers` tables

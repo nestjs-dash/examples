@@ -51,8 +51,8 @@ can read.
 ```sh
 docker compose up -d            # from this directory
 cp .env.example .env
-pnpm install
-pnpm --filter example-audit-log start:dev
+npm install
+npm run start:dev
 ```
 
 `synchronize: true` creates the `authors`/`books`/`nestjs_dash_audit_log`

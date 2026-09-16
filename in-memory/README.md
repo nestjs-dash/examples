@@ -12,8 +12,8 @@ against.
 ## Run it
 
 ```sh
-pnpm install
-pnpm --filter example-in-memory start:dev
+npm install
+npm run start:dev
 ```
 
 Then open http://localhost:4001/admin and sign in with:

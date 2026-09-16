@@ -1,8 +1,8 @@
 {
-  "name": "example-in-memory",
+  "name": "example-translation",
   "version": "0.0.1",
   "private": true,
-  "description": "Minimal AdminModule example using @nestjs-dash/in-memory — zero DB setup.",
+  "description": "AdminModule example using @nestjs-dash/translation against Postgres (jsonb) or MySQL (json), selected via DB_DRIVER.",
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
@@ -15,21 +15,26 @@
   },
   "dependencies": {
     "@nestjs-dash/core": "1.2.0",
-    "@nestjs-dash/in-memory": "1.0.4",
     "@nestjs-dash/nestjs": "1.2.0",
     "@nestjs-dash/storage": "1.0.5",
+    "@nestjs-dash/translation": "0.2.0",
+    "@nestjs-dash/typeorm": "1.0.4",
     "@nestjs/common": "^12.0.1",
+    "@nestjs/config": "^12.0.0",
     "@nestjs/core": "^12.0.1",
     "@nestjs/platform-express": "^12.0.1",
-    "@nestjs/swagger": "^12.0.1",
+    "@nestjs/typeorm": "^12.0.1",
+    "mysql2": "^3.15.2",
+    "pg": "^8.16.0",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.2"
+    "rxjs": "^7.8.2",
+    "typeorm": "^1.1.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^12.0.0",
     "@nestjs/schematics": "^12.0.0",
     "@types/express": "^5.0.6",
-    "@types/node": "^24.0.0",
+    "@types/node": "^22.20.2",
     "oxlint": "^1.82.0",
     "typescript": "^6.0.2"
   }

@@ -20,12 +20,12 @@ which is itself the point of this example — see `src/app.module.ts`.
 ```sh
 docker compose up -d            # from this directory
 cp .env.example .env
-pnpm install                    # runs `prisma generate` via postinstall
-pnpm --filter example-prisma db:push
-pnpm --filter example-prisma start:dev
+npm install                     # runs `prisma generate` via postinstall
+npm run db:push
+npm run start:dev
 ```
 
-`pnpm install`'s `postinstall` script runs `prisma generate`, which
+`npm install`'s `postinstall` script runs `prisma generate`, which
 downloads Prisma's query-engine binary from Prisma's own CDN on first run
 (a different host than the npm registry) — if that's blocked in your
 environment, `prisma generate` will fail with a network error; there's no
