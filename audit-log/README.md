@@ -5,7 +5,7 @@ turned on to record every create/update/delete/bulk/relation mutation made
 through the admin UI (`AdminController`). Mutations made only through the
 JSON API are not audited.
 
-Docs: [Audit log](https://nestjs-dash.zakot.tech/plugins/audit-log).
+Docs: [Audit log](https://nestjs-dash.zakout.tech/plugins/audit-log).
 
 ## What "audit" actually is
 

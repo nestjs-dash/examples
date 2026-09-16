@@ -56,6 +56,6 @@ one complete immediately.
   DiscoveryService) rather than through `AdminModule.forFeature([...])`
   like `TaskResource` (see `src/tasks/tasks.module.ts`).
 - `src/app.module.ts` — `panel.plugins([TypeOrmAdapter.forRoot(),
-  BullMqQueuePlugin.forRoot({ queues: [tasksQueue] })])`.
+BullMqQueuePlugin.forRoot({ queues: [tasksQueue] })])`.
 
-Docs: [BullMQ](https://nestjs-dash.zakot.tech/plugins/bullmq).
+Docs: [BullMQ](https://nestjs-dash.zakout.tech/plugins/bullmq).

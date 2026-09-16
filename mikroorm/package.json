@@ -17,8 +17,8 @@
   "dependencies": {
     "@nestjs-dash/core": "1.2.1",
     "@nestjs-dash/mikroorm": "1.0.5",
-    "@nestjs-dash/nestjs": "1.2.1",
-    "@nestjs-dash/storage": "1.0.6",
+    "@nestjs-dash/nestjs": "2.0.0",
+    "@nestjs-dash/storage": "1.0.7",
     "@mikro-orm/core": "7.2.0",
     "@mikro-orm/decorators": "7.2.0",
     "@mikro-orm/nestjs": "^7.1.0",

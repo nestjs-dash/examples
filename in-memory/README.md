@@ -61,4 +61,4 @@ Sign in with:
 Restarting the app resets all data — it only lives in memory for the
 process lifetime.
 
-Docs: [Swagger / OpenAPI](https://nestjs-dash.zakot.tech/plugins/swagger).
+Docs: [Swagger / OpenAPI](https://nestjs-dash.zakout.tech/plugins/swagger).
