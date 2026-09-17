@@ -25,9 +25,14 @@ Note: `example-audit-log` also defaults to port `4006` — run only one at a tim
     for `palette: { seed: '#7c3aed' }` to see the single-seed-color generator
     produce an equivalent palette instead.
   - `panel.radius`/`fontFamily`/`spacing` — the rest of the theming knobs.
+  - `panel.ui` — `customCss`, `classNames`, and `layout` (see UI overrides docs).
   - `panel.logoUrl` — a small inline SVG data URI. **Comment this line out**
     and reload to see the fallback: a badge with the brand name's
     capitalized first letter ("N"), shown both expanded and collapsed.
+- `src/authors/author.resource.ts` — resource `ui` (scoped colors), `view()`
+  via `@nestjs-dash/infolists`, and a small reactive form (`type` → `company`,
+  `country` → `city` with `optionsUrl`).
+
   - Collapse the sidebar (⌘/Ctrl+B, or the trigger in the header) to see the
     logo/initial swap to icon-only mode, with the brand name hidden.
 - `src/widgets/top-books.widget.ts` — `TopBooksWidget`, a DI-based custom

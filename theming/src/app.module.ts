@@ -75,6 +75,12 @@ const LOGO_DATA_URI =
         fontFamily: "'Inter', 'Segoe UI', sans-serif",
         spacing: '0.26rem',
 
+        ui: {
+          customCss: '.afi-brand-mark { filter: saturate(1.05); }',
+          classNames: { shell: 'afi-theming-shell' },
+          layout: { density: 'comfortable' },
+        },
+
         // --- Branding: comment this out to see the fallback — a badge with
         // the brand name's capitalized first letter ("N"), shown both
         // expanded and collapsed (⌘/Ctrl+B to toggle the sidebar). ---
