@@ -1,0 +1,11 @@
+{
+  // Type-checks against @nestjs-dash/translation's *source* (the "source" export
+  // condition) so edits to the package show up here without rebuilding its dist.
+  // Check-only: never emit from this config.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "customConditions": ["source"],
+    "noEmit": true,
+    "incremental": false
+  }
+}

@@ -1,4 +1,5 @@
-import { TranslatableColumn, type TranslationMap } from '@nestjs-dash/translation';
+import type { TranslationMap } from '@nestjs-dash/translation';
+import { TranslatableColumn } from '@nestjs-dash/translation/typeorm';
 import { Filterable } from '@nestjs-dash/typeorm';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 

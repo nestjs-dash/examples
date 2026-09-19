@@ -3,8 +3,8 @@ import { TypeOrmAdapter } from '@nestjs-dash/typeorm';
 import { TranslatableModule } from '@nestjs-dash/translation';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { DataSource } from 'typeorm';
+import { getDataSourceToken, TypeOrmModule } from '@nestjs/typeorm';
+import type { DataSource } from 'typeorm';
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from './locales.js';
 import { ProductMysqlEntity } from './products/product-mysql.entity.js';
 import { ProductMysqlResource } from './products/product-mysql.resource.js';
@@ -48,7 +48,10 @@ const driver = process.env.DB_DRIVER === 'mysql' ? 'mysql' : 'postgres';
       supportedLocales: SUPPORTED_LOCALES,
     }),
     AdminModule.forRootAsync({
-      inject: [ConfigService, DataSource],
+      // Inject by token, not by the `DataSource` class: pnpm can resolve this app's `typeorm` and
+      // @nestjs/typeorm's `typeorm` to different instances, so the two `DataSource` classes differ and a
+      // class-based lookup fails with UnknownDependenciesException.
+      inject: [ConfigService, getDataSourceToken()],
       useFactory: async (config: ConfigService, dataSource: DataSource) => {
         await seedProductsIfEmpty(dataSource, driver === 'mysql' ? ProductMysqlEntity : ProductEntity);
 
